@@ -1,0 +1,22 @@
+## Template of files to ignore
+
+**SLURM output files**
+```
+slurm-*.out
+*.out
+*.err
+```
+*.csv
+*.tsv
+*.txt
+*.gz
+*.zip
+*.tar
+*.bam
+*.fastq
+*.fq
+*.vcf
+*.bed
+data/
+results/
+output/
