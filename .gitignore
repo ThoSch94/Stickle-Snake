@@ -17,6 +17,7 @@ slurm-*.out
 *.fq
 *.vcf
 *.bed
-data/
+*.Zone.Identifier
+#data/
 results/
 output/
