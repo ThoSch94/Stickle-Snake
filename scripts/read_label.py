@@ -1,6 +1,6 @@
 
 # path (including filename) where th logfile should be created
-log_file = r"/mnt/data/crop.json"
+log_file = r"/mnt/data/label_log.json"
 
 # path where the images are stored
 image_dir = r"/mnt/data"
@@ -35,7 +35,7 @@ import re
 import json
 import argparse
 
-def main(log_file, image_dir, flip, pattern = "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}", rename = True):
+def main(log_file, image_dir, flip, pattern = "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}", rename = True, save_ocr_visualization = False, visualization_dir = r"/mnt/data/debug"):
     file_duplications = {}
     unclear_labels = {}
     statistics = {}
@@ -249,13 +249,23 @@ def label_error_handeling(string):
                 errors_handled += 1
         string = ''.join(string_list)
     return [errors_handled, string]
+
+def str2bool(v):
+    # helper function to parse boolean arguments from command line
+    if isinstance(v, bool): return v
+    if v.lower() in ("yes","true","t","1"): return True
+    if v.lower() in ("no","false","f","0"): return False
+    raise argparse.ArgumentTypeError("Boolean value expected.")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Read labels from images using OCR and rename files accordingly.")
     parser.add_argument("--log_file", default=log_file, help="Path to the log file where results will be saved.")
     parser.add_argument("--image_dir", default=image_dir, help="Directory containing the images to process.")
-    parser.add_argument("--flip", action="store_true", help="Whether to flip the images 180 degrees before processing.")
+    parser.add_argument("--flip", type=str2bool, nargs='?', const=True, default=False, help="Whether to flip images 180° before processing.")
+    parser.add_argument("--rename", type=str2bool, nargs='?', const=True, default=True, help="Whether to rename files based on detected labels.")
     parser.add_argument("--pattern", default=pattern, help="Regex pattern to identify valid labels.")
-    parser.add_argument("--rename", action="store_true", help="Whether to rename files based on detected labels.")
+    parser.add_argument("--save_ocr_visualization", type=str2bool, nargs='?', const=True, default=False, help="Whether to save images with OCR detections visualized.")
     args = parser.parse_args()
-    main(log_file = args.log_file, image_dir = args.image_dir, flip = args.flip, pattern = args.pattern, rename =  args.rename)
+    main(log_file = args.log_file, image_dir = args.image_dir, flip = args.flip, pattern = args.pattern, rename =  args.rename, save_ocr_visualization = args.save_ocr_visualization)
     
