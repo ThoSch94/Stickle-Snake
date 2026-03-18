@@ -1,0 +1,22 @@
+#Configuration for Step 1 of the stickleback pipeline, which is responsible for reading labels from raw images using a trained OCR model. The configuration includes parameters such as the log file path, whether to flip images, the regex pattern for valid labels, whether to rename files based on detected labels, and whether to save visualizations of OCR detections.
+log_file_label: /mnt/data/label_log.json
+flip_label: false
+pattern: "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}"
+rename: true
+save_ocr_visualization: false
+visualization_dir: "/mnt/data/debug"
+container: "/storage/homefs/rs23l510/containers/crop_fish.sif"
+#
+#
+#Configurarion for Step 2 of the stickleback pipeline, which is responsible for cropping the images based on the detected fish bounding boxes and saving the cropped images in a specified directory. The configuration includes parameters such as the input image directory, the output directory for cropped images, and the container that contains the necessary dependencies to run the cropping script.
+output_dir: /mnt/data/cropped_images
+crop_config: /mnt/support/pipeline.config 
+crop_label_file: /mnt/support/label_map.pbtxt
+checkpoint_path: /mnt/support/
+container: "/storage/homefs/rs23l510/containers/crop_fish.sif"
+checkpoint_prefix: "stickle_find"
+right_side_up: true
+save_bbox_coordinates: false
+display_image_with_bbox: false
+save_image_with_bbox: false
+save_cropped_image: true

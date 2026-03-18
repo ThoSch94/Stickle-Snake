@@ -1,0 +1,1 @@
+This folder contains the trained model (ckpt) as well as the label names (label_map.pbtxt) and the config of the model (pipeline.config)
