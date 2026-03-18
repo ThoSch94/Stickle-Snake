@@ -1,20 +1,8 @@
 {
-    "statistics_Untitled_test": {
-        "log_type": "statistics",
-        "status": "renamed",
-        "old_filename": "Untitled_test.JPG",
-        "new_filename": "CC21L003",
-        "labels": [
-            {
-                "name": "CC21L003",
-                "score": [
-                    0.6889112503909961,
-                    0.7787399642311961,
-                    0.8698255575046826,
-                    0.7341671478470504
-                ]
-            }
-        ],
-        "comment": "File renamed following unanimous label vote"
+    "filename_identical_CC21L003": {
+        "log_type": "filename_identical",
+        "status": "skipped",
+        "old_filename": "CC21L003.jpg",
+        "comment": "filename already matches detected label"
     }
 }
