@@ -1,6 +1,0 @@
-log_file: /mnt/data/label_log.json
-flip: false
-pattern: "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}"
-rename: false
-save_ocr_visualization: false
-visualization_dir: "/mnt/data/debug"
