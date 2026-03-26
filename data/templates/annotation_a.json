@@ -1,0 +1,23 @@
+{
+    "reference": {
+        "a": {
+            "info": {
+                "annotation_type": "reference",
+                "phenopype_function": "create_reference",
+                "phenopype_version": "6.1.0"
+            },
+            "settings": {},
+            "data": {
+                "label": null,
+                "reference": [35.232, "mm"],
+                "support": [
+                    [1865, 3011],
+                    [2217, 2996]
+                ],
+                "mask": [
+                    [[1767, 2673], [2301, 2673], [2301, 3074], [1767, 3074], [1767, 2673]]
+                ]
+            }
+        }
+    }
+}

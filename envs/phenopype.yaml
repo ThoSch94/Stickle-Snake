@@ -1,0 +1,9 @@
+# envs/phenopype.yaml
+name: phenopype-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - phenopype
+  - opencv          
+  - snakemake-minimal
