@@ -1,0 +1,23 @@
+{
+    "reference": {
+        "a": {
+            "info": {
+                "annotation_type": "reference",
+                "phenopype_function": "detect_reference",
+                "phenopype_version": "6.1.0"
+            },
+            "settings": {
+                "get_mask": true,
+                "correct_colours": false,
+                "min_matches": 10,
+                "resize": 1
+            },
+            "data": {
+                "reference": [35.26, "mm"],
+                "mask": [
+                    [[1722, 2618], [1722, 3133], [2334, 3133], [2334, 2618], [1722, 2618]]
+                ]
+            }
+        }
+    }
+}
