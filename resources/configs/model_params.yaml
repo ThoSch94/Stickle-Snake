@@ -1,0 +1,10 @@
+#Configuration for Machine Learning parameters for ML Morph, which is responsible for landmarking the stickleback images. The configuration includes parameters such as the file paths for the training and testing data, the number of landmarks to be detected, the batch size for training, the number of epochs for training, and the learning rate for the optimizer.
+threads: 16
+tree_depth: 2
+cascade_depth: 40
+nu_reg_param: 0.1
+oversampling: 300
+feature_size: 1200
+test_splits: 20
+num_trees: 500
+input_tps: "data/raw_images/Test_Input.TPS"

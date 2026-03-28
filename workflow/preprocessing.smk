@@ -66,14 +66,16 @@ checkpoint measure_fish: #Rule to extract the pixel/unit distance data from an i
         "--input_template {input.template} "
         "--input_annotation data/templates/annotation_{wildcards.template_name}.json"
 
-checkpoint measurements_done:
+rule specimen_measurements_done:
     input:
         # aggregate all annotation files produced by measure_fish
         lambda wildcards: [
             os.path.join("data/measurements", f)
             for f in os.listdir("data/measurements")
             if f.endswith("_annotation.json")
-        ]
+        ] if os.path.exists("data/measurements") else []
+    log:
+        notebook="logs/specimen_measurements_done.log" #log file path
     output:
         touch("data/measurements/.done")
 

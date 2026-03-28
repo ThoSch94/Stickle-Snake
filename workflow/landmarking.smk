@@ -1,4 +1,4 @@
-configfile: "resources/configs/StickleSnake.yaml" #We need to specify the config file that contains the parameters for the script
+configfile: "resources/configs/model_params.yaml" #We need to specify the config file that contains the parameters for the script
 
 #rule all:
 #    input:
@@ -6,13 +6,69 @@ configfile: "resources/configs/StickleSnake.yaml" #We need to specify the config
 
 rule crop_lands: 
     input: 
-        "data/raw_images/{landmark_name}.tps"
+        lands =config["input_tps"], #We need to specify the input tps file that contains the landmark coordinates
+        directory = "data/cropped_images/", #We need to specify the directory that contains the cropped images, which will be used to match the landmark coordinates with the corresponding images
     output: 
-        "data/cropped_images/{landmark_name}.tps"
+        "data/landmarks/cropped_input.tps"
+    log: 
+        notebook="logs/crop_lands.log"
     shell: 
         "python3 scripts/crop_tps_coordinates.py"
-        "--input_tps {input}" 
+        "--input_tps {input.lands} " 
         "--outfile {output}"
-        "--bbox_files data/cropped_images"
+        "--bbox_files {input.directory}"
 
-        
+rule preprocess_landmark_model: 
+    input: 
+        directory = "data/cropped_images/",
+        lands = "data/landmarks/cropped_input.tps"
+    output: 
+        "data/train.xml",
+        "data/test.xml",
+    conda: 
+        "envs/ml_morph.yaml" #We need to specify the conda environment
+    log: 
+        notebook="logs/preprocess_landmark_model.log" #log file path
+    shell:
+        "python3 scripts/ml-morph_scripts/preprocessing.py "
+        "-i {input.directory} "
+        "-t {input.lands}"
+
+rule train_landmark_model: 
+    input: 
+        train = "data/train.xml",
+        test = "data/test.xml",
+    output: 
+        "models/landmark_model.dat"
+    conda: 
+        "envs/ml_morph.yaml" #We need to specify the conda environment
+    log:
+        notebook="logs/train_landmark_model.log" #log file path
+    shell:
+        "python3 scripts/ml-morph_scripts/shape_trainer.py"
+        "-d {input.train}"
+        "-t {input.test}"
+        "-th {config[threads]}"
+        "-dp {config[tree_depth]}"
+        "-c {config[cascade_depth]}"
+        "-nu {config[nu_reg_param]}"
+        "-os {config[oversampling]}"
+        "-f {config[feature_size]}"
+        "-n {config[num_trees]}"
+        "-s {config[test_splits]}"
+
+rule predict_landmarks:
+    input:
+        directory= "data/cropped_images/",
+        model = "models/landmark_model.dat",
+    output:
+        "data/output/predicted_landmarks.tps"
+    conda: 
+        "envs/ml_morph.yaml" #We need to specify the conda env
+    log:
+        notebook="logs/predict_landmarks.log" #log file path
+    shell:
+        "python3 scripts/ml-morph_scripts/prediction.py "
+        "-i {input.directory} "
+        "-p {input.model} "
+        "-o {output}"

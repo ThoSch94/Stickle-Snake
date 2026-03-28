@@ -5,4 +5,6 @@ include: "landmarking.smk" #This is to include the landmarking rules,
 
 rule all: 
     input: 
-        "data/cropped_images/{landmark_name}.tps" #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
+        "data/cropped_images", #indicating that the cropped images have been generated and saved in a new folder
+        "data/measurements/specimen_scales.csv", #indicating that the measurements have been extracted from the images and saved in a csv file
+        "data/output/predicted_landmarks.tps" #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
