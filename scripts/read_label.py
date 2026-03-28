@@ -34,6 +34,7 @@ import os
 import re
 import json
 import argparse
+import sys
 
 def main(log_file, image_dir, flip, pattern = "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}", rename = True, save_ocr_visualization = False, visualization_dir = r"/mnt/data/debug"):
     file_duplications = {}
@@ -257,6 +258,30 @@ def str2bool(v):
     if v.lower() in ("no","false","f","0"): return False
     raise argparse.ArgumentTypeError("Boolean value expected.")
 
+def validate_paths(log_file, image_dir):
+    """Check paths are valid before running the rest of the script."""
+    errors = []
+    
+    # Check input directory exists
+    if not os.path.exists(image_dir):
+        errors.append(f"Image directory does not exist: {image_dir}")
+    
+    # Check log file directory exists, create it if not
+    log_dir = os.path.dirname(log_file)
+    if log_dir and not os.path.exists(log_dir):
+        try:
+            os.makedirs(log_dir, exist_ok=True)
+            print(f"Created log directory: {log_dir}")
+        except PermissionError:
+            errors.append(f"Cannot create log directory (permission denied): {log_dir}")
+    
+    # If any errors, report them all at once and exit cleanly
+    if errors:
+        print("Path validation failed:")
+        for e in errors:
+            print(f"  - {e}")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Read labels from images using OCR and rename files accordingly.")
@@ -267,5 +292,6 @@ if __name__ == "__main__":
     parser.add_argument("--pattern", default=pattern, help="Regex pattern to identify valid labels.")
     parser.add_argument("--save_ocr_visualization", type=str2bool, nargs='?', const=True, default=False, help="Whether to save images with OCR detections visualized.")
     args = parser.parse_args()
+    validate_paths(args.log_file, args.image_dir)
     main(log_file = args.log_file, image_dir = args.image_dir, flip = args.flip, pattern = args.pattern, rename =  args.rename, save_ocr_visualization = args.save_ocr_visualization)
     
