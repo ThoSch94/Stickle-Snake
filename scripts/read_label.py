@@ -3,7 +3,7 @@
 log_file = r"/mnt/data/label_log.json"
 
 # path where the images are stored
-image_dir = r"/mnt/data"
+image_dir = r"/mnt/data/raw_images/"
 
 # regex pattern for correct labels
 pattern = "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}"
