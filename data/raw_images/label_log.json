@@ -1,8 +1,0 @@
-{
-    "filename_identical_CC21L003": {
-        "log_type": "filename_identical",
-        "status": "skipped",
-        "old_filename": "CC21L003.jpg",
-        "comment": "filename already matches detected label"
-    }
-}
