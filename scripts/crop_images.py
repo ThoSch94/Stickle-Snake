@@ -39,7 +39,7 @@ import matplotlib.pyplot as plt
 import json
 import matplotlib.image as mpimg
 
-def main(path, out_dir, pipeline_config_path, checkpoint_path, label_path, checkpoint, flip = True, save_bbox_coordinates = False, display_image_with_bbox = False, save_image_with_bbox = False, save_cropped_image = True):
+def main(path, out_dir, pipeline_config_path, checkpoint_path, label_path, checkpoint, flip = True, save_bbox_coordinates = True, display_image_with_bbox = False, save_image_with_bbox = False, save_cropped_image = True):
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
@@ -229,7 +229,7 @@ if __name__ == "__main__":
     parser.add_argument("--label_path", help="Path to the label file")
     parser.add_argument("--checkpoint", help="Checkpoint number")
     parser.add_argument("--flip", type=str2bool, nargs='?', const=True, default=False, help="Flip images before processing")
-    parser.add_argument("--save_bbox_coordinates", type=str2bool, nargs='?', const=True, default=False, help="Save bounding box coordinates to files")
+    parser.add_argument("--save_bbox_coordinates", type=str2bool, nargs='?', const=True, default=True, help="Save bounding box coordinates to files")
     parser.add_argument("--display_image_with_bbox", type=str2bool, nargs='?', const=True, default=False, help="Display image with bounding boxes")
     parser.add_argument("--save_image_with_bbox", type=str2bool, nargs='?', const=True, default=False, help="Save image with bounding boxes")
     parser.add_argument("--save_cropped_image", type=str2bool, nargs='?', const=True, default=False, help="Save cropped images")
