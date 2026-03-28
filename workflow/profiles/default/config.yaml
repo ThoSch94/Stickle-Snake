@@ -1,0 +1,6 @@
+use-conda: true
+conda-frontend: mamba
+use-apptainer: true
+apptainer-args: "--bind data:/mnt/data --bind resources/support:/mnt/support"
+jobs: 100
+cores: 32

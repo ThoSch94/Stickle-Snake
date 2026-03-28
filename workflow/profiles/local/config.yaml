@@ -1,0 +1,6 @@
+use-conda: true
+conda-frontend: mamba
+use-apptainer: true
+apptainer-args: "--bind data/raw_images:/mnt/data --bind resources/support:/mnt/support"
+cores: 4        # limit to local machine cores
+jobs: 1         # run jobs sequentially, not in parallel

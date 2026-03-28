@@ -1,4 +1,3 @@
-# envs/phenopype.yaml
 name: phenopype-env
 channels:
   - conda-forge

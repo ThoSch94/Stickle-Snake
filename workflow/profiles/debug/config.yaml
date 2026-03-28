@@ -1,0 +1,7 @@
+use-conda: true
+cores: 1
+jobs: 1
+dryrun: true      # just print what would run, don't execute
+printshellcmds: true   # show the actual shell commands
+verbose: true
+executor: dryrun
