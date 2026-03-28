@@ -1,0 +1,9 @@
+name: ml_morph_env
+channels:
+  - conda-forge
+dependencies:
+    - python=3.10
+    - pandas>=0.22.0
+    - numpy>=1.13.3
+    - opencv-python>=3.4.0.12
+    - dlib>=19.7.0
