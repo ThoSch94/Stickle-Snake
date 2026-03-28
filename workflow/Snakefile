@@ -1,0 +1,8 @@
+configfile: "resources/configs/StickleSnake.yaml" #We need to specify the config file that contains the parameters for the script
+
+include: "preprocessing.smk" #This is to include the preprocessing rules, which will be run before the landmarking rules. This allows us to separate the different steps of the pipeline into different files for better organization and readability.
+include: "landmarking.smk" #This is to include the landmarking rules,
+
+rule all: 
+    input: 
+        "data/cropped_images/{landmark_name}.tps" #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
