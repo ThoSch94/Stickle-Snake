@@ -13,10 +13,10 @@ rule crop_lands:
     log: 
         notebook="logs/crop_lands.log"
     shell: 
-        "python3 scripts/crop_tps_coordinates.py"
-        "--input_tps {input.lands} " 
-        "--outfile {output}"
-        "--bbox_files {input.directory}"
+        "python3 scripts/crop_tps_coordinates.py "
+        "{input.lands} " 
+        "{output} "
+        "{input.directory}"
 
 rule preprocess_landmark_model: 
     input: 
@@ -45,17 +45,18 @@ rule train_landmark_model:
     log:
         notebook="logs/train_landmark_model.log" #log file path
     shell:
-        "python3 scripts/ml-morph_scripts/shape_trainer.py"
-        "-d {input.train}"
-        "-t {input.test}"
-        "-th {config[threads]}"
-        "-dp {config[tree_depth]}"
-        "-c {config[cascade_depth]}"
-        "-nu {config[nu_reg_param]}"
-        "-os {config[oversampling]}"
-        "-f {config[feature_size]}"
-        "-n {config[num_trees]}"
-        "-s {config[test_splits]}"
+        "python3 scripts/ml-morph_scripts/shape_trainer.py "
+        "-d {input.train} "
+        "-t {input.test} "
+        "-th {config[threads]} "
+        "-dp {config[tree_depth]} "
+        "-c {config[cascade_depth]} "
+        "-nu {config[nu_reg_param]} "
+        "-os {config[oversampling]} "
+        "-f {config[feature_size]} "
+        "-n {config[num_trees]} "
+        "-s {config[test_splits]} "
+        "-o {output}"
 
 rule predict_landmarks:
     input:

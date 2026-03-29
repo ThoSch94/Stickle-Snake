@@ -7,4 +7,5 @@ rule all:
     input: 
         "data/cropped_images", #indicating that the cropped images have been generated and saved in a new folder
         "data/measurements/specimen_scales.csv", #indicating that the measurements have been extracted from the images and saved in a csv file
-        "data/output/predicted_landmarks.tps" #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
+        "data/output/predicted_landmarks.tps", #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
+        "data/measurements/.done" #indicating that the measurements have been generated and saved in a new folder

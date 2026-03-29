@@ -45,13 +45,13 @@ options.oversampling_amount = args['oversampling']
 options.be_verbose = True
 
 #Training the model
-train_path = os.path.join('./', args['dataset'])
-dlib.train_shape_predictor(train_path, args['out']+".dat", options)
+train_path = os.path.abspath(args['dataset']) #shift to absolute path to avoid dlib file handling issues
+dlib.train_shape_predictor(train_path, args['out'], options) #remove.dat extension for testing to avoid dlib file handling issues
 print("Training error (average pixel deviation): {}".format(
-    dlib.test_shape_predictor(train_path, args['out']+".dat")))
+    dlib.test_shape_predictor(train_path, args['out']))) #remove.dat extension for testing to avoid dlib file handling issues
 
 #Testing the model (if test data was provided)
 if args['test'] is not None:
-    test_path = os.path.join('./', args['test'])
+    test_path = os.path.abspath(args['test']) #shift to absolute path to avoid dlib file handling issues
     print("Testing error (average pixel deviation): {}".format(
-        dlib.test_shape_predictor(test_path, args['out']+".dat")))
+        dlib.test_shape_predictor(test_path, args['out']))) #remove.dat extension for testing to avoid dlib file handling issues

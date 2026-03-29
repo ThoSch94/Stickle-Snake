@@ -7,7 +7,9 @@ save_ocr_visualization: false
 visualization_dir: "/mnt/data/debug"
 container: "/storage/homefs/rs23l510/containers/crop_fish.sif"
 #
-#
+#Configureation for Step 2 of the stickleback pipeline, which is responsible for measuring the fish in the images using template matching. 
+template_name: "a"
+
 #Configurarion for Step 3 of the stickleback pipeline, which is responsible for cropping the images based on the detected fish bounding boxes and saving the cropped images in a specified directory. The configuration includes parameters such as the input image directory, the output directory for cropped images, and the container that contains the necessary dependencies to run the cropping script.
 output_dir: /mnt/data/cropped_images
 crop_config: /mnt/support/pipeline.config 

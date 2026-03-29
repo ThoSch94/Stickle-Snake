@@ -1,6 +1,7 @@
 import phenopype as pp
 import json, cv2, os
 import argparse
+import re
 
 def main(input_image, input_template, input_annotation):
 
@@ -18,9 +19,9 @@ def main(input_image, input_template, input_annotation):
     )
 
     image_stem = input_image.split("/")[-1].split(".")[0]
-    template_stem = input_template.split("/")[-1].split(".")[0]
+    template_stem = re.search(r"template_(.+)\.png", input_template).group(1)
     os.makedirs("data/measurements", exist_ok=True)
-    pp.core.export.save_annotation(annotation, dir_path="data/measurements/", file_name=f"{image_stem}_{template_stem}_annotation.json") 
+    pp.core.export.save_annotation(annotation, dir_path="data/measurements/", file_name=f"{image_stem}_annotation_{template_stem}.json") 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Measure fish using template matching.")

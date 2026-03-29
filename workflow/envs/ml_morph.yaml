@@ -4,6 +4,6 @@ channels:
 dependencies:
     - python=3.10
     - pandas>=0.22.0
-    - numpy>=1.13.3
+    - numpy<2 #this version is important to avoid binary incompatability
     - opencv>=3.4.0.12
     - dlib>=19.7.0
