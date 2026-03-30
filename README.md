@@ -62,32 +62,31 @@ There are a few different options for this, depending on your preferences (see t
 
 * Snakemake (pixi)
 
-  ```sh
-pixi init
-pixi workspace channel add conda-forge
-pixi workspace channel add bioconda
-pixi add snakemake
-  ``
+```sh
+  pixi init
+  pixi workspace channel add conda-forge
+  pixi workspace channel add bioconda
+  pixi add snakemake
+```
 
 * Snakemake (conda)
-  ```sh
-conda create -c conda-forge -c bioconda -c nodefaults -n snakemake snakemake
-conda activate snakemake
-  ``
-
+```sh
+  conda create -c conda-forge -c bioconda -c nodefaults -n snakemake snakemake
+  conda activate snakemake
+```
 
 * Snakemake (pip)
-  ```sh
-pip install snakemake
-  ```
+```sh
+  pip install snakemake
+```
 
 If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
 See the installation page of phenopype for more details.
 
 * phenopype (pip)
-  ```sh
-pip install phenopype
-  ```
+```sh
+  pip install phenopype
+```
 
 ### Installation
 
@@ -95,7 +94,7 @@ pip install phenopype
    ```sh
    git clone https://github.com/sulserrb/StickleSnake.git
    ```
-   ```
+
 2. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin github_username/repo_name
