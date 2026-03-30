@@ -1,1 +1,147 @@
-Files for the 2D analysis pipeline and associated publication. I will eventually merge all of these files together, but first to make snakemake with these peices!
+<h3 align="center">StickleSnake</h3>
+
+  <p align="center">
+    A phenotyping pipeline for threespine stickelback based around the SnakeMake workflow manager
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/github_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+This repo contains all necessary files for SnakeMake, a 2D phenotyping pipeline for automatic measurement and analysis of threespine stickleback specimens. Also included are sample data and templates needed to run through the tutorial, which also recreates the key findings and steps in the main publication. 
+
+
+
+Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+There are a few important dependencies to download before starting. Most essential is SnakeMake itself: https://snakemake.github.io/
+There are a few different options for this, depending on your preferences (see the installation page of SnakeMake itself for more details).
+
+
+* Snakemake (pixi)
+
+  ```sh
+pixi init
+pixi workspace channel add conda-forge
+pixi workspace channel add bioconda
+pixi add snakemake
+  ```
+
+* Snakemake (conda))
+  ```sh
+conda create -c conda-forge -c bioconda -c nodefaults -n snakemake snakemake
+conda activate snakemake
+  ```
+
+* Snakemake (pip)
+  ```sh
+pip install snakemake
+  ```
+
+If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
+See the installation page of phenopype for more details.
+
+* phenopype (pip)
+  ```sh
+pip install phenopype
+  ```
+
+### Installation
+
+1. Clone the repo. This will install all files assocaited witht he program and tutorial. 
+   ```sh
+   git clone https://github.com/sulserrb/StickleSnake.git
+   ```
+   ```
+2. Change git remote url to avoid accidental pushes to base project
+   ```sh
+   git remote set-url origin github_username/repo_name
+   git remote -v # confirm the changes
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+This program can automatically relabel files in images, set a scale, and landmark specimen images. While it can work with small datasets, the program is designed for large-scale projects and sampling for use by the larger stickleback community. 
+
+_For examples and use cases, please refer to the main paper(https://example.com)_
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+!-- CONTRIBUTING -->
+## Contributing
+
+ Any contributions you make are **greatly appreciated**. If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+## License
+
+To be built alongside publication and release. 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+
+Ben Sulser - r.benjamin.sulser@unibe.ch
+
+Project Link: [https://github.com/sulserrb/StickleSnake](https://github.com/sulserrb/StickleSnake)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
