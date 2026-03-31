@@ -101,7 +101,7 @@ See the installation page of phenopype for more details. It is important that th
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-### Usage
+## Usage
 
 This program can automatically relabel files in images, set a scale, and landmark specimen images. While it can work with small datasets, the program is designed for large-scale projects and sampling for use by the larger stickleback community. 
 
@@ -127,11 +127,11 @@ A final window will pop up.  Draw the template itself using left click + drag, e
 
 _For examples and use cases, please refer to the main paper(https://example.com)_
 
-### Main Program 
+## Main Program 
 
 The StickleSnake pipeline is broken into two main components, to better divide the common tasks of image preprocessing (steps 1-3; label reading, cropping, and measuring) and landmarking (steps 4-5; model training and landmark application) as described in the publication.
 
-## Preprocessing step 
+### Preprocessing step 
 
 Check the config file (default: resources/configs/StickleSnake.yaml) to ensure settings and filepaths are set correctly prior to use. 
 
@@ -139,7 +139,7 @@ Check the config file (default: resources/configs/StickleSnake.yaml) to ensure s
 snakemake -s workflow/preprocessing.smk
 ```
 
-## Landmarking
+### Landmarking
 
 Check the config file (default: resources/configs/model_params.yaml) to ensure settings and filepaths are set correctly prior to use. 
 
@@ -147,7 +147,7 @@ Check the config file (default: resources/configs/model_params.yaml) to ensure s
 snakemake -s workflow/landmarking.smk
 ```
 
-## All unfinished steps
+### All unfinished steps
 
 All steps can be run with the following command (helpful for validating install/following this tutorial). Snakemake will run any steps not yet finished, helpful for validating an finished run and checking if files have changed or been updated. 
 
