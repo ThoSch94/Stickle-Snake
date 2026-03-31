@@ -3,12 +3,12 @@
   <p align="center">
     A phenotyping pipeline for threespine stickelback based around the SnakeMake workflow manager
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sulserrb/StickleSnake"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/sulserrb/StickleSnake/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/sulserrb/StickleSnake/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -41,9 +41,6 @@
 
 This repo contains all necessary files for SnakeMake, a 2D phenotyping pipeline for automatic measurement and analysis of threespine stickleback specimens. Also included are sample data and templates needed to run through the tutorial, which also recreates the key findings and steps in the main publication. 
 
-
-
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,7 +78,7 @@ There are a few different options for this, depending on your preferences (see t
 ```
 
 If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
-See the installation page of phenopype for more details.
+See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input. 
 
 * phenopype (pip)
 ```sh
@@ -90,14 +87,14 @@ See the installation page of phenopype for more details.
 
 ### Installation
 
-1. Clone the repo. This will install all files assocaited witht he program and tutorial. 
+1. Clone the repo. This will install all files assocaited with the program and tutorial. 
    ```sh
    git clone https://github.com/sulserrb/StickleSnake.git
    ```
 
 2. Change git remote url to avoid accidental pushes to base project
    ```sh
-   git remote set-url origin github_username/repo_name
+   git remote set-url origin sulserrb/StickleSnake
    git remote -v # confirm the changes
    ```
 
@@ -107,6 +104,20 @@ See the installation page of phenopype for more details.
 ## Usage
 
 This program can automatically relabel files in images, set a scale, and landmark specimen images. While it can work with small datasets, the program is designed for large-scale projects and sampling for use by the larger stickleback community. 
+
+## Setting a template
+
+While we have provided a test template for running a tutorial, users will almost certainly want to provide their own templates for matching. This can be done with the following command from the root directory: 
+
+```sh
+python initialize_templates_light.py --template_name <name for template> --ref_image_path <path/to/imaage>
+```
+
+A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press <ENTER> to confirm when ready. 
+
+A input will pop up - enter the length (in mm) of the distance you just measured. Press <ENTER> to confirm. 
+
+A final window will pop up.  Draw the template itself using left click + drag, ensuring that this encompasses the initial measurement line. 
 
 _For examples and use cases, please refer to the main paper(https://example.com)_
 
