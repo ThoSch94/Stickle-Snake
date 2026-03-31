@@ -115,9 +115,15 @@ python initialize_templates_light.py --template_name <name for template> --ref_i
 
 A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press <ENTER> to confirm when ready. 
 
-A input will pop up - enter the length (in mm) of the distance you just measured. Press <ENTER> to confirm. 
+![Step_1](Template_1.png)
+
+A second window with an input will pop up - enter the length (in mm) of the distance you just measured. Press <ENTER> to confirm. 
+
+![Step_2](Template_2.png)
 
 A final window will pop up.  Draw the template itself using left click + drag, ensuring that this encompasses the initial measurement line. 
+
+![Step_3](Template_3.png)
 
 _For examples and use cases, please refer to the main paper(https://example.com)_
 
