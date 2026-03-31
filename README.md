@@ -26,6 +26,11 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
+            <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#setting-a-template">Setting a Template</a></li>
+        <li><a href="#main-program">Main Program</a></li>
+      </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
