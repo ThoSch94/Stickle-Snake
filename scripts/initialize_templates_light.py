@@ -16,6 +16,9 @@ def main(template_name, ref_image_path):
         # ... user draws ROI interactively here
     )
 
+    #Replace default key "a" with the template name for better readability and to avoid issues with JSON serialization
+    template['reference'][template_name] = template['reference'].pop("a")  # Convert to dict for JSON serialization
+    #Save the coordinates to draw the template image
     coords = template['reference'][template_name]['data']['mask'][0]
 
     ## save template image
