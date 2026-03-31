@@ -83,7 +83,8 @@ There are a few different options for this, depending on your preferences (see t
 ```
 
 If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
-See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input. 
+See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input.
+The bulk of the pipeline can be run headless and/or on a cluster. 
 
 * phenopype (pip)
 ```sh
