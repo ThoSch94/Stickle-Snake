@@ -78,7 +78,7 @@ There are a few different options for this, depending on your preferences (see t
 ```
 
 If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
-See the installation page of phenopype for more details.
+See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input. 
 
 * phenopype (pip)
 ```sh
@@ -87,7 +87,7 @@ See the installation page of phenopype for more details.
 
 ### Installation
 
-1. Clone the repo. This will install all files assocaited witht he program and tutorial. 
+1. Clone the repo. This will install all files assocaited with the program and tutorial. 
    ```sh
    git clone https://github.com/sulserrb/StickleSnake.git
    ```
@@ -104,6 +104,20 @@ See the installation page of phenopype for more details.
 ## Usage
 
 This program can automatically relabel files in images, set a scale, and landmark specimen images. While it can work with small datasets, the program is designed for large-scale projects and sampling for use by the larger stickleback community. 
+
+## Setting a template
+
+While we have provided a test template for running a tutorial, users will almost certainly want to provide their own templates for matching. This can be done with the following command from the root directory: 
+
+```sh
+python initialize_templates_light.py --template_name <name for template> --ref_image_path <path/to/imaage>
+```
+
+A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press <ENTER> to confirm when ready. 
+
+A input will pop up - enter the length (in mm) of the distance you just measured. Press <ENTER> to confirm. 
+
+A final window will pop up.  Draw the template itself using left click + drag, ensuring that this encompasses the initial measurement line. 
 
 _For examples and use cases, please refer to the main paper(https://example.com)_
 
