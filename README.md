@@ -82,14 +82,33 @@ There are a few different options for this, depending on your preferences (see t
   pip install snakemake
 ```
 
-If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
+
+If you want to create your own templates (highly recommended), you will also need to install phenopype: https://www.phenopype.org/
 See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input.
-The bulk of the pipeline can be run headless and/or on a cluster. 
+The bulk of the pipeline can be run headless and/or on a cluster, and the files can be simply transferred to these machines
 
 * phenopype (pip)
 ```sh
   pip install phenopype
 ```
+
+Finally, on the machine you intend to use this program, install the container. This can be done with whatever program you prefer/is installed on your cluster: 
+
+* docker
+```sh
+   docker pull thoschiller/research_project
+```
+
+* apptainer
+```sh
+   apptainer pull thoschiller/research_project
+```
+* singularity
+```sh
+   singularity pull thoschiller/research_project
+```
+
+
 
 ### Installation
 
@@ -103,6 +122,7 @@ The bulk of the pipeline can be run headless and/or on a cluster.
    git remote set-url origin sulserrb/StickleSnake
    git remote -v # confirm the changes
    ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
