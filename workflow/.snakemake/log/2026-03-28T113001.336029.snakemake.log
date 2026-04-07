@@ -1,0 +1,2 @@
+WorkflowError in file "/storage/homefs/rs23l510/git/stickle_pipeline/workflow/Snakefile", line 1:
+Workflow defines configfile resources/configs/StickleSnake.yaml but it is not present or accessible (full checked path: /storage/homefs/rs23l510/git/stickle_pipeline/workflow/resources/configs/StickleSnake.yaml).

@@ -1,0 +1,7 @@
+use-conda: true
+conda-frontend: mamba
+use-singularity: true
+singularity-args: "--bind data:/mnt/data --bind resources/support:/mnt/support"
+jobs: 100
+cores: 32
+
