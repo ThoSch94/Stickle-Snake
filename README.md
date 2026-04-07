@@ -159,18 +159,17 @@ The StickleSnake pipeline is broken into two main components, to better divide t
 
 ### Preprocessing step 
 
-Check the config file (default: resources/configs/StickleSnake.yaml) to ensure settings and filepaths are set correctly prior to use. 
-
+Check the config file (default: resources/configs/StickleSnake.yaml) and the user profile (default: workflow/profiles/default/config.yaml) to ensure settings and filepaths are set correctly prior to use. 
 ```bash
-snakemake -s workflow/preprocessing.smk
+snakemake -snakefile workflow/preprocessing.smk --profile workflow/profiles/default 
 ```
 
 ### Landmarking
 
-Check the config file (default: resources/configs/model_params.yaml) to ensure settings and filepaths are set correctly prior to use. 
+Check the config file (default: resources/configs/model_params.yaml) and the user profile (default: workflow/profiles/default/config.yaml) to ensure settings and filepaths are set correctly prior to use. 
 
 ```bash
-snakemake -s workflow/landmarking.smk
+snakemake --snakefile workflow/landmarking.smk --profile workflow/profiles/default 
 ```
 
 ### All unfinished steps
@@ -178,7 +177,7 @@ snakemake -s workflow/landmarking.smk
 All steps can be run with the following command (helpful for validating install/following this tutorial). Snakemake will run any steps not yet finished, helpful for validating an finished run and checking if files have changed or been updated. 
 
 ```sh
-snakemake -s workflow/Snakefile
+snakemake --snakefile workflow/Snakefile --profile workflow/profiles/default 
 ```
 
 
