@@ -26,7 +26,7 @@ def main(template_name, ref_image_path):
     cv2.imwrite(template_path, box)
     print(f"Saved file: {template_path}")
 
-    pp.core.export.save_annotation(template, dir_path="data/templates/", file_name=f"annotation_{template_name}.json")  # Save the template for later use
+    pp.core.export.save_annotation(template, dir_path="data/templates/", file_name=f"annotation_{template_name}.json", overwrite=True)  # Save the template for later use
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Set up phenopype template.")
