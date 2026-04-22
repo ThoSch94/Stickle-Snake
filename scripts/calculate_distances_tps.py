@@ -110,7 +110,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Calculate distances between landmarks in two .tps files.")
     parser.add_argument("--file_a", type=str, required=True, help="Path to the first .tps file.")
     parser.add_argument("--file_b", type=str, required=True, help="Path to the second .tps file.")
-    parser.add_argument("--output_file", type=str, required=True, default="landmark_distances.csv", help="Path to save the output CSV file.")
+    parser.add_argument("--output_file", type=str, default="data/output/landmark_distances.csv", help="Path to save the output CSV file.")
     args = parser.parse_args()  
 
     main(args.file_a, args.file_b, args.output_file)
