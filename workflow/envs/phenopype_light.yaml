@@ -1,0 +1,9 @@
+name: phenopype_light
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.5
+  - pip:
+      - numpy==2.2.4
+      - opencv-contrib-python==4.13.0.92
+      - phenopype==6.1.0

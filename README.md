@@ -82,14 +82,33 @@ There are a few different options for this, depending on your preferences (see t
   pip install snakemake
 ```
 
-If you want to create your own templates, you will also need to install phenopype: https://www.phenopype.org/
+
+If you want to create your own templates (highly recommended), you will also need to install phenopype: https://www.phenopype.org/
 See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input.
-The bulk of the pipeline can be run headless and/or on a cluster. 
+The bulk of the pipeline can be run headless and/or on a cluster, and the files can be simply transferred to these machines
 
 * phenopype (pip)
 ```sh
   pip install phenopype
 ```
+
+Finally, on the machine you intend to use this program, install the container. This can be done with whatever program you prefer/is installed on your cluster: 
+
+* docker
+```sh
+   docker pull thoschiller/research_project
+```
+
+* apptainer
+```sh
+   apptainer pull thoschiller/research_project
+```
+* singularity
+```sh
+   singularity pull thoschiller/research_project
+```
+
+
 
 ### Installation
 
@@ -103,6 +122,7 @@ The bulk of the pipeline can be run headless and/or on a cluster.
    git remote set-url origin sulserrb/StickleSnake
    git remote -v # confirm the changes
    ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,22 +155,21 @@ _For examples and use cases, please refer to the main paper(https://example.com)
 
 ## Main Program 
 
-The StickleSnake pipeline is broken into two main components, to better divide the common tasks of image preprocessing (steps 1-3; label reading, cropping, and measuring) and landmarking (steps 4-5; model training and landmark application) as described in the publication.
+The StickleSnake pipeline is broken into two main components, to better divide the common tasks of image preprocessing (steps 1-3; label reading, cropping, and measuring) and landmarking (steps 4-5; model training and landmark application) as described in the publication. The orignal default (default: workflow/profiles/default/config.yaml) uses apptainer; change this path to the docker or singularity if you prefer. 
 
 ### Preprocessing step 
 
-Check the config file (default: resources/configs/StickleSnake.yaml) to ensure settings and filepaths are set correctly prior to use. 
-
+Check the config file (default: resources/configs/StickleSnake.yaml) and the user profile (default: workflow/profiles/default/config.yaml)  to ensure settings and filepaths are set correctly prior to use. 
 ```bash
-snakemake -s workflow/preprocessing.smk
+snakemake -snakefile workflow/preprocessing.smk --profile workflow/profiles/default 
 ```
 
 ### Landmarking
 
-Check the config file (default: resources/configs/model_params.yaml) to ensure settings and filepaths are set correctly prior to use. 
+Check the config file (default: resources/configs/model_params.yaml) and the user profile (default: workflow/profiles/default/config.yaml) to ensure settings and filepaths are set correctly prior to use. 
 
 ```bash
-snakemake -s workflow/landmarking.smk
+snakemake --snakefile workflow/landmarking.smk --profile workflow/profiles/default 
 ```
 
 ### All unfinished steps
@@ -158,7 +177,7 @@ snakemake -s workflow/landmarking.smk
 All steps can be run with the following command (helpful for validating install/following this tutorial). Snakemake will run any steps not yet finished, helpful for validating an finished run and checking if files have changed or been updated. 
 
 ```sh
-snakemake -s workflow/Snakefile
+snakemake --snakefile workflow/Snakefile --profile workflow/profiles/default 
 ```
 
 

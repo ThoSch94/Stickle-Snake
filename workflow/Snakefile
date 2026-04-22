@@ -9,3 +9,5 @@ rule all:
         "data/measurements/specimen_scales.csv", #indicating that the measurements have been extracted from the images and saved in a csv file
         "data/output/predicted_landmarks.tps", #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
         "data/measurements/.done" #indicating that the measurements have been generated and saved in a new folder
+    benchmark:
+        "benchmarks/bench_all.txt" #This is to specify the benchmark file that will be used to record the execution time of the rules in the pipeline. This allows us to track the performance of the pipeline and identify any bottlenecks or areas for improvement.

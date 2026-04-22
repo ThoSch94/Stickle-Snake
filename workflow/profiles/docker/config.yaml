@@ -1,0 +1,7 @@
+use-conda: true
+conda-frontend: mamba
+use-docker: true
+docker-args: "--volume data:/mnt/data --volume resources/support:/mnt/support"
+jobs: 100
+cores: 32
+

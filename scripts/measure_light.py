@@ -6,20 +6,49 @@ import re
 def main(input_image, input_template, input_annotation):
 
     ref_template = cv2.imread(input_template)
+    
+    if ref_template is None:
+        print (f"Error: Could not read template image at {input_template}. Please check the file path and ensure the image exists.")
+        return 1
+    
+
+
     with open(input_annotation) as f:
         template_data = json.load(f)
 
     image = pp.load_image(input_image)
+    template_stem = re.search(r"template_(.+)\.png", input_template).group(1)
+
+    #print (f"Measuring {input_image} using template {template_stem} with annotation {input_annotation}")
     # AKAZE matching runs headlessly against the saved template
     annotation = pp.preprocessing.detect_reference(
         image,
         template      = ref_template,
-        px_ratio = template_data["reference"]["a"]["data"]["reference"][0],
-        unit = template_data["reference"]["a"]["data"]["reference"][1],
+        px_ratio = template_data["reference"][template_stem]["data"]["reference"][0],
+        unit = template_data["reference"][template_stem]["data"]["reference"][1],
     )
 
+    #print(f"Annotation for {input_image}:\n{annotation}")
+
+    if annotation is None:
+        print (f"detect_reference returned None for {input_image} — template match likely failed or px_ratio/unit are malformed.")
+        image_stem = os.path.splitext(os.path.basename(input_image))[0]
+        out_dir = "data/measurements"
+        os.makedirs(out_dir, exist_ok=True)
+
+        out_file = os.path.join(
+            out_dir,
+            f"{image_stem}_annotation_{template_stem}.json"
+        )
+
+        with open(out_file, "w", encoding="utf-8") as f:
+            json.dump({}, f, indent=2)
+
+        print(f"Wrote empty annotation: {out_file}")
+        return 1
+
     image_stem = input_image.split("/")[-1].split(".")[0]
-    template_stem = re.search(r"template_(.+)\.png", input_template).group(1)
+    #template_stem = re.search(r"template_(.+)\.png", input_template).group(1)
     os.makedirs("data/measurements", exist_ok=True)
     pp.core.export.save_annotation(annotation, dir_path="data/measurements/", file_name=f"{image_stem}_annotation_{template_stem}.json") 
 
