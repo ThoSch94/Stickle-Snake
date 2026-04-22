@@ -12,6 +12,8 @@ rule crop_lands:
         "data/landmarks/cropped_input.tps"
     log: 
         notebook="logs/crop_lands.log"
+    benchmark:
+        "benchmarks/bench_crop_lands.txt"
     shell: 
         "python3 scripts/crop_tps_coordinates.py "
         "{input.lands} " 
@@ -29,6 +31,8 @@ rule preprocess_landmark_model:
         "envs/ml_morph.yaml" #We need to specify the conda environment
     log: 
         notebook="logs/preprocess_landmark_model.log" #log file path
+    benchmark:
+        "benchmarks/bench_preprocess_landmark_model.txt"
     shell:
         "python3 scripts/ml-morph_scripts/preprocessing.py "
         "-i {input.directory} "
@@ -44,6 +48,8 @@ rule train_landmark_model:
         "envs/ml_morph.yaml" #We need to specify the conda environment
     log:
         notebook="logs/train_landmark_model.log" #log file path
+    benchmark:
+        "benchmarks/bench_train_landmark_model.txt"
     shell:
         "python3 scripts/ml-morph_scripts/shape_trainer.py "
         "-d {input.train} "
@@ -68,6 +74,8 @@ rule predict_landmarks:
         "envs/ml_morph.yaml" #We need to specify the conda env
     log:
         notebook="logs/predict_landmarks.log" #log file path
+    benchmark:
+        "benchmarks/bench_predict_landmarks.txt"
     shell:
         "python3 scripts/ml-morph_scripts/prediction.py "
         "-i {input.directory} "
