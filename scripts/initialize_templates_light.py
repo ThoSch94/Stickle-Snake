@@ -25,8 +25,8 @@ def main(template_name, ref_image_path):
     box = ref_image[coords[0][1]:coords[2][1], coords[0][0]:coords[1][0]]
     cv2.imwrite(template_path, box)
     print(f"Saved file: {template_path}")
-
-    pp.core.export.save_annotation(template, dir_path="data/templates/", file_name=f"annotation_{template_name}.json")  # Save the template for later use
+    print(f"Template size: {template['reference'][template_name]['data']['reference']}")
+    pp.core.export.save_annotation(template, dir_path="data/templates/", file_name=f"annotation_{template_name}.json", overwrite=True)  # Save the template for later use
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Set up phenopype template.")
