@@ -62,15 +62,6 @@ There are a few important dependencies to download before starting. Most essenti
 There are a few different options for this, depending on your preferences (see the installation page of SnakeMake itself for more details).
 
 
-* Snakemake (pixi)
-
-```sh
-  pixi init
-  pixi workspace channel add conda-forge
-  pixi workspace channel add bioconda
-  pixi add snakemake
-```
-
 * Snakemake (conda)
 ```sh
   conda create -c conda-forge -c bioconda -c nodefaults -n snakemake snakemake
@@ -81,7 +72,14 @@ There are a few different options for this, depending on your preferences (see t
 ```sh
   pip install snakemake
 ```
+* Snakemake (pixi)
 
+```sh
+  pixi init
+  pixi workspace channel add conda-forge
+  pixi workspace channel add bioconda
+  pixi add snakemake
+```
 
 If you want to create your own templates (highly recommended), you will also need to install phenopype: https://www.phenopype.org/
 See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input.
@@ -139,11 +137,11 @@ While we have provided a test template for running a tutorial, users will almost
 python initialize_templates_light.py --template_name <name for template> --ref_image_path <path/to/imaage>
 ```
 
-A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press <ENTER> to confirm when ready. 
+A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press /<ENTER>/ to confirm when ready. 
 
 ![Step_1](Template_1.png)
 
-A second window with an input will pop up - enter the length (in mm) of the distance you just measured. Press <ENTER> to confirm. 
+A second window with an input will pop up - enter the length (in mm) of the distance you just measured. Press /<ENTER>/ to confirm. 
 
 ![Step_2](Template_2.png)
 
@@ -151,7 +149,7 @@ A final window will pop up.  Draw the template itself using left click + drag, e
 
 ![Step_3](Template_3.png)
 
-_For examples and use cases, please refer to the main paper(https://example.com)_
+_For examples and use cases, please refer to the main paper (https://placeholder.url.com)_
 
 ## Main Program 
 
@@ -159,14 +157,15 @@ The StickleSnake pipeline is broken into two main components, to better divide t
 
 ### Preprocessing step 
 
-Check the config file (default: resources/configs/StickleSnake.yaml) and the user profile (default: workflow/profiles/default/config.yaml)  to ensure settings and filepaths are set correctly prior to use. 
+Check the config file (default: resources/configs/StickleSnake.yaml) and the user profile (default: workflow/profiles/default/config.yaml)  to ensure settings and filepaths are set correctly prior to use. This will run all necessary steps up to the landmark training and prediction
+
 ```bash
 snakemake -snakefile workflow/preprocessing.smk --profile workflow/profiles/default 
 ```
 
 ### Landmarking
 
-Check the config file (default: resources/configs/model_params.yaml) and the user profile (default: workflow/profiles/default/config.yaml) to ensure settings and filepaths are set correctly prior to use. 
+Check the config file (default: resources/configs/model_params.yaml) and the user profile (default: workflow/profiles/default/config.yaml) to ensure settings and filepaths are set correctly prior to use. This will run all steps from landmark training to landmark analysis.
 
 ```bash
 snakemake --snakefile workflow/landmarking.smk --profile workflow/profiles/default 
