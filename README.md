@@ -92,14 +92,13 @@ The bulk of the pipeline can be run headless and/or on a cluster, and the files 
 
 Finally, on the machine you intend to use this program, install the container. This can be done with whatever program you prefer/is installed on your cluster: 
 
-* docker
-```sh
-   docker pull thoschiller/research_project
-```
-
 * apptainer
 ```sh
    apptainer pull thoschiller/research_project
+```
+* docker
+```sh
+   docker pull thoschiller/research_project
 ```
 * singularity
 ```sh
@@ -137,11 +136,11 @@ While we have provided a test template for running a tutorial, users will almost
 python initialize_templates_light.py --template_name <name for template> --ref_image_path <path/to/imaage>
 ```
 
-A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press /<ENTER>/ to confirm when ready. 
+A window will then pop up. Measure two points on a ruler or known reference object with the left click, remove with the right click. Press ENTER to confirm when ready. 
 
 ![Step_1](Template_1.png)
 
-A second window with an input will pop up - enter the length (in mm) of the distance you just measured. Press /<ENTER>/ to confirm. 
+A second window with an input will pop up - enter the length (in mm) of the distance you just measured. Press ENTER to confirm. 
 
 ![Step_2](Template_2.png)
 
