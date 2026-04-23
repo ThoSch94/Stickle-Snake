@@ -41,15 +41,15 @@ checkpoint read_label: #Rule to read the label using a trained OCR model and sav
         "--flip {config[flip_label]} "
         "--pattern {config[pattern]} "
         "--rename {config[rename]} "
-        "--save_ocr_visualization {config[save_ocr_visualization]}"
+        "--save_ocr_visualization {config[save_ocr_visualization]} "
+        "> {log.notebook} 2>&1"
 
 rule specimen_measurements_done:
     input:
         get_measurements  
     output:
         touch("data/measurements/.done")
-    log:
-        notebook = "logs/specimen_measurements_done.log"
+
 
 rule crop_fish: #Rule to read a fish image, crop the fish using the bounding box coordinates obtained from the OCR model and save the cropped image in a new folder. This step is optional and can be skipped if the user only wants to read the labels without cropping the images. 
     input:
@@ -74,7 +74,8 @@ rule crop_fish: #Rule to read a fish image, crop the fish using the bounding box
         "--save_bbox_coordinates {config[save_bbox_coordinates]} "
         "--display_image_with_bbox {config[display_image_with_bbox]} "
         "--save_image_with_bbox {config[save_image_with_bbox]} "
-        "--save_cropped_image {config[save_cropped_image]}"
+        "--save_cropped_image {config[save_cropped_image]} "
+        "> {log.notebook} 2>&1"
 
 
 rule measure_fish: #Rule to extract the pixel/unit distance data from an image, using template matching
@@ -97,8 +98,8 @@ rule measure_fish: #Rule to extract the pixel/unit distance data from an image, 
         "python3 scripts/measure_light.py "
         "--input_image {input.image} "
         "--input_template {input.template} "
-        "--input_annotation data/templates/annotation_{wildcards.template_name}.json"
-
+        "--input_annotation data/templates/annotation_{wildcards.template_name}.json "
+        "> {log.notebook} 2>&1"
 
 
 rule concatenate_measurements: #Rule to concatenate the measurements from all the images into a single csv file.
@@ -111,5 +112,6 @@ rule concatenate_measurements: #Rule to concatenate the measurements from all th
     benchmark:
         "benchmarks/bench_concatenate_measurements.txt"
     shell:
-        "python3 scripts/Extract_Scales.py"
+        "python3 scripts/Extract_Scales.py "
+        "> {log.notebook} 2>&1"
 
