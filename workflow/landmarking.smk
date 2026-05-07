@@ -1,8 +1,9 @@
 configfile: "resources/configs/model_params.yaml" #We need to specify the config file that contains the parameters for the script
 
-#rule all:
-#    input:
-#        "data/cropped_images/{landmark_name}.tps" #indicating that the landmarks have been cropped from the tps files (or otherwise provided)
+if not config.get("run_all"): #set "all" rule when run independently, but not when running the whole pipeline
+    rule all:
+        input:
+            "data/output/results_table.tex"
 
 rule crop_lands: 
     input: 

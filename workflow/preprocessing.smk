@@ -3,6 +3,13 @@ from pathlib import Path
 
 configfile: "resources/configs/StickleSnake.yaml" 
 
+if not config.get("run_all"): #set "all" rule when run independently, but not when running the whole pipeline
+    rule all:
+        input:
+            "data/cropped_images", #indicating that the cropped images have been generated and saved in a new folder
+            "data/measurements/specimen_scales.csv", #indicating that the measurements have been extracted from the images and saved in a csv file
+
+
 def get_measurements(wildcards):
     # This line blocks until read_label checkpoint is done
     checkpoints.read_label.get()
