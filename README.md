@@ -111,7 +111,7 @@ Finally, on the machine you intend to use this program, install the container. T
 
 1. Clone the repo. This will install all files assocaited with the program and tutorial. 
    ```sh
-   git clone https://github.com/sulserrb/StickleSnake.git
+   git clone git@github.com:sulserrb/StickleSnake.git
    ```
 
 2. Change git remote url to avoid accidental pushes to base project
