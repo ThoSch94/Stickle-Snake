@@ -4,4 +4,5 @@ use-singularity: true
 singularity-args: "--bind data:/mnt/data --bind resources/support:/mnt/support"
 jobs: 100
 cores: 32
-
+resources:
+  mem_mb: 64000 #Set this to match your system's available memory

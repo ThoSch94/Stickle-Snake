@@ -1,3 +1,7 @@
+#Configuration file to set limits on available jobs - set your limits here: 
+system_mem_mb: 64000 #Set this to match your system's available memory
+
+
 #Configuration for Step 1 of the stickleback pipeline, which is responsible for reading labels from raw images using a trained OCR model. The configuration includes parameters such as the log file path, whether to flip images, the regex pattern for valid labels, whether to rename files based on detected labels, and whether to save visualizations of OCR detections.
 log_file_label: /mnt/data/raw_images/label_log.json
 flip_label: false
@@ -6,11 +10,11 @@ rename: true
 save_ocr_visualization: false
 visualization_dir: "/mnt/data/debug"
 container: "/storage/homefs/rs23l510/containers/crop_fish.sif"
-#
-#Configureation for Step 2 of the stickleback pipeline, which is responsible for measuring the fish in the images using template matching. 
+
+#Configuration for Step 2 of the stickleback pipeline, which is responsible for measuring the fish in the images using template matching. 
 template_name: "a"
 
-#Configurarion for Step 3 of the stickleback pipeline, which is responsible for cropping the images based on the detected fish bounding boxes and saving the cropped images in a specified directory. The configuration includes parameters such as the input image directory, the output directory for cropped images, and the container that contains the necessary dependencies to run the cropping script.
+#Configuration for Step 3 of the stickleback pipeline, which is responsible for cropping the images based on the detected fish bounding boxes and saving the cropped images in a specified directory. The configuration includes parameters such as the input image directory, the output directory for cropped images, and the container that contains the necessary dependencies to run the cropping script.
 output_dir: /mnt/data/cropped_images
 crop_config: /mnt/support/pipeline.config 
 crop_label_file: /mnt/support/label_map.pbtxt
