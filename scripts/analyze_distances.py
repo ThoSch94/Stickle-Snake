@@ -93,7 +93,7 @@ def visualize_data_scatterplot(data):
 def visualize_data_outliers(data):
     """
     Visualize the distribution and outliers of distances for each landmark.
-Shows median, quartiles, and outliers in a compact format.
+    Shows median, quartiles, and outliers in a compact format.
     """
     plt.figure(figsize=(12, 6))
     sns.boxplot(x="Landmark", y="Distance", data=data, palette="vlag")
