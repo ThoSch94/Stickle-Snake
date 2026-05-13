@@ -44,7 +44,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This repo contains all necessary files for SnakeMake, a 2D phenotyping pipeline for automatic measurement and analysis of threespine stickleback specimens. Also included are sample data and templates needed to run through the tutorial, which also recreates the key findings and steps in the main publication. 
+This repo contains all necessary files for StickleSnake, a 2D phenotyping pipeline for automatic measurement and analysis of threespine stickleback specimens. Also included are sample data and templates needed to run through the tutorial, which also recreates the key findings and steps in the main publication. 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -58,7 +58,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-There are a few important dependencies to download before starting. Most essential is SnakeMake itself: https://snakemake.github.io/
+There are important dependencies to download before starting. Most essential is SnakeMake itself: https://snakemake.github.io/
 There are a few different options for this, depending on your preferences (see the installation page of SnakeMake itself for more details).
 
 
@@ -148,11 +148,11 @@ A final window will pop up.  Draw the template itself using left click + drag, e
 
 ![Step_3](Template_3.png)
 
-_For examples and use cases, please refer to the main paper (https://placeholder.url.com)_
+_For errors, additional examples, and use cases, please refer to the main paper (placeholder.url.com)_
 
 ## Main Program 
 
-The StickleSnake pipeline is broken into two main components, to better divide the common tasks of image preprocessing (steps 1-3; label reading, cropping, and measuring) and landmarking (steps 4-5; model training and landmark application) as described in the publication. The orignal default (default: workflow/profiles/default/config.yaml) uses apptainer; change this path to the docker or singularity if you prefer. 
+The StickleSnake pipeline is broken into two main components, to better divide the common tasks of image preprocessing (steps 1-3; label reading, cropping, and measuring) and landmarking (steps 4-5; model training and landmark application) as described in the publication. The orignal default (default: workflow/profiles/default/config.yaml) uses apptainer; change this path to the docker or singularity configurations if you prefer. 
 
 ### Preprocessing step 
 
@@ -202,6 +202,8 @@ snakemake --snakefile workflow/Snakefile --profile workflow/profiles/default
 
 To be built alongside publication and release. 
 
+If you publish findings using StickleSnake, please also cite the original papers of [Ml-Morph](10.1111/2041-210X.13373): and [phenopype](10.1093/iob/obae036) which are essential components of this pipeline.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
@@ -210,5 +212,7 @@ To be built alongside publication and release.
 Ben Sulser - r.benjamin.sulser@unibe.ch
 
 Project Link: [https://github.com/sulserrb/StickleSnake](https://github.com/sulserrb/StickleSnake)
+
+Alaska Project Main Page: [https://alaskastickleback.com/](https://alaskastickleback.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
