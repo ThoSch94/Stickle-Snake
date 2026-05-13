@@ -202,7 +202,7 @@ snakemake --snakefile workflow/Snakefile --profile workflow/profiles/default
 
 To be built alongside publication and release. 
 
-If you publish findings using StickleSnake, please also cite the original papers of [Ml-Morph](https://doi.org/10.1111/2041-210X.13373): and [phenopype](https://doi.org/10.1093/iob/obae036) which are essential components of this pipeline.
+If you publish findings using StickleSnake, please also cite the original papers of [Ml-Morph](https://doi.org/10.1111/2041-210X.13373) and [phenopype](https://doi.org/10.1111/2041-210X.13771) which are essential components of this pipeline.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
