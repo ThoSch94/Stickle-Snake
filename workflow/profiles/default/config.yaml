@@ -4,5 +4,6 @@ use-apptainer: true
 apptainer-args: "--bind data:/mnt/data --bind resources/support:/mnt/support"
 jobs: 100
 cores: 32
-resources:
-  mem_mb: 64000
+#OPTIONAL: Set limits by editing the line below here and in the config file in resources/configs/StickleSnake.yaml. If you set limits here, make sure to set the same limits in the config file, and make sure to uncomment the line in the config file. If you set limits in the config file, make sure to uncomment the line in the config file and set the same limits here. If you do not set limits here, make sure to set limits in the config file and uncomment the line in the config file. If you do not set limits in either place, there will be no limits on available jobs and memory.
+#resources:
+#  mem_mb: 64000

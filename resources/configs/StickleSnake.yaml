@@ -1,5 +1,5 @@
-#Configuration file to set limits on available jobs - set your limits here: 
-system_mem_mb: 64000 #Set this to match your system's available memory
+#Configuration file to set limits on available jobs - set your limits here by editing the line below and also in your main profile in workflow/profiles/<your chosen profile>. If you set limits here, make sure to set the same limits in the default profile, and make sure to uncomment the line in the default profile. If you set limits in the default profile, make sure to uncomment the line in the default profile and set the same limits here. If you do not set limits here, make sure to set limits in the default profile and uncomment the line in the default profile. If you do not set limits in either place, there will be no limits on available jobs and memory.
+###system_mem_mb: 64000 #Set this to match your system's available memory
 
 
 #Configuration for Step 1 of the stickleback pipeline, which is responsible for reading labels from raw images using a trained OCR model. The configuration includes parameters such as the log file path, whether to flip images, the regex pattern for valid labels, whether to rename files based on detected labels, and whether to save visualizations of OCR detections.
