@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
+
 """Apply scale values from a CSV to TPS landmark blocks.
 
 Usage:
   python Apply_Scale_To_TPS.py --csv scales.csv --tps input.tps --out output.tps
 
 CSV must have columns: specimen,scale (column names configurable)
-TPS file is parsed into blocks starting with a line beginning `LM=`. For each block
+TPS file is parsed into blocks corresponding to each specimen starting with a line beginning `LM=`. For each block
 the script finds `IMAGE=` (or `ID=`) to match the specimen and inserts a line
 `SCALE=<value>` immediately after the `VARIABLES=` line in that block. If no
 `VARIABLES=` line exists, `SCALE=` is appended at the end of the block.
