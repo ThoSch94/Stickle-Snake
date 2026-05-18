@@ -9,7 +9,7 @@ pattern: "[A-Z]{2}[0-9]{2}[A-Z][0-9]{3}"
 rename: true
 save_ocr_visualization: false
 visualization_dir: "/mnt/data/debug"
-container: "/storage/homefs/rs23l510/containers/crop_fish.sif"
+container: "./crop_fish.sif"
 
 #Configuration for Step 2 of the stickleback pipeline, which is responsible for measuring the fish in the images using template matching. 
 template_name: "a"
