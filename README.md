@@ -58,6 +58,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+This pipeline is meant to be run on linux/WSL. 
 There are important dependencies to download before starting. Most essential is SnakeMake itself: https://snakemake.github.io/
 There are a few different options for this, depending on your preferences (see the installation page of SnakeMake itself for more details).
 
@@ -66,6 +67,7 @@ There are a few different options for this, depending on your preferences (see t
 ```sh
   conda create -c conda-forge -c bioconda -c nodefaults -n snakemake snakemake
   conda activate snakemake
+  conda install -c conda-forge "setuptools<82" 
 ```
 
 * Snakemake (pip)
@@ -80,6 +82,30 @@ There are a few different options for this, depending on your preferences (see t
   pixi workspace channel add bioconda
   pixi add snakemake
 ```
+If you are using WSL you will need some more dependencies:
+
+```sh
+apt update
+apt install -y \
+  libgl1 \
+  libglib2.0-0 \
+  libxkbcommon-x11-0 \
+  libxcb-xinerama0 \
+  libxcb-cursor-dev \
+  libxcb-icccm4 \
+  libxcb-image0 \
+  libxcb-keysyms1 \
+  libxcb-render-util0 \
+  libxcb-shape0 \
+  libxcb-randr0 \
+  libxcb-render0 \
+  libxcb-shm0 \
+  libxcb-sync1 \
+  libxcb-xfixes0 \
+  libxcb1 \
+  libdbus-1-3
+apt install -y x11-apps
+```
 
 If you want to create your own templates (highly recommended), you will also need to install phenopype: https://www.phenopype.org/
 See the installation page of phenopype for more details. It is important that this program is installed on a machine that allows for interactive (GUI) input.
@@ -89,12 +115,13 @@ The bulk of the pipeline can be run headless and/or on a cluster, and the files 
 ```sh
   pip install phenopype
 ```
+If you are using conda and running into "No module named pip" try: conda install -c conda-forge pip
 
 Finally, on the machine you intend to use this program, install the container. This can be done with whatever program you prefer/is installed on your cluster: 
 
 * apptainer
 ```sh
-   apptainer pull thoschiller/research_project
+   apptainer pull docker://thoschiller/research_project
 ```
 * docker
 ```sh
@@ -102,7 +129,7 @@ Finally, on the machine you intend to use this program, install the container. T
 ```
 * singularity
 ```sh
-   singularity pull thoschiller/research_project
+   singularity pull docker://thoschiller/research_project
 ```
 
 
@@ -116,6 +143,7 @@ Finally, on the machine you intend to use this program, install the container. T
 
 2. Change git remote url to avoid accidental pushes to base project
    ```sh
+   cd StickleSnake 
    git remote set-url origin sulserrb/StickleSnake
    git remote -v # confirm the changes
    ```
@@ -159,7 +187,7 @@ The StickleSnake pipeline is broken into two main components, to better divide t
 Check the config file (default: resources/configs/StickleSnake.yaml) and the user profile (default: workflow/profiles/default/config.yaml)  to ensure settings and filepaths are set correctly prior to use. This will run all necessary steps up to the landmark training and prediction
 
 ```bash
-snakemake -snakefile workflow/preprocessing.smk --profile workflow/profiles/default 
+snakemake --snakefile workflow/preprocessing.smk --profile workflow/profiles/default 
 ```
 
 ### Landmarking
